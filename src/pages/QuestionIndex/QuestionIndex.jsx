@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getAllQuestions } from '../../services/questionService'
-import QuestionList from '../../components/QuestionList/QuestionList'
+import IndexCard from '../../components/QuestionList/IndexCard'
 
 const QuestionIndex = (props) => {
   const[questions, setQuestions] = useState([{}])
@@ -10,6 +10,7 @@ const QuestionIndex = (props) => {
       const questionData = await getAllQuestions()
       setQuestions(questionData)
     }
+
     fetchAllQuestions()
     return () => { setQuestions([{}]) }
   }, [])
@@ -18,16 +19,20 @@ const QuestionIndex = (props) => {
 
   return (
     <div className='h-screen w-screen bg-amber-500'>
-      {
-        questions.map((question) => {
-          <QuestionList 
-            key={question.id}
-            question={question.question}
-            answer={question.answer}
-            category={question.category}
-            difficulty={question.difficulty}
-          />
-        })
+      {questions ?
+          questions.map((question, i) => (
+            question._id &&
+              <div key={question._id} className='flex group relative'>
+                <IndexCard 
+                  question={question.question}
+                  answer={question.answer}
+                  category={question.category}
+                  difficulty={question.difficulty}
+                />
+              </div>
+          ))
+        :
+          <div className='bg-red-600'>No questions yet</div>
       }
     </div>
   )
