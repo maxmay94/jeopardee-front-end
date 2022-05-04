@@ -5,6 +5,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import QuestionIndex from './pages/QuestionIndex/QuestionIndex'
 import * as authService from './services/authService'
 
 const App = () => {
@@ -34,10 +35,13 @@ const App = () => {
           path="/login"
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
-
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+        />
+        <Route 
+          path='/index'
+          element={user ? <QuestionIndex /> : <Navigate to="/login" />}
         />
       </Routes>
     </>
