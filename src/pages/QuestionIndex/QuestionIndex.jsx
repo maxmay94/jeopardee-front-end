@@ -18,7 +18,7 @@ const QuestionIndex = (props) => {
   console.log('questions ------->> ', questions)
 
   return (
-    <div className='h-screen w-screen bg-amber-500'>
+    <div className='h-full w-full bg-blue-900'>
       {questions ?
           questions.map((question, i) => (
             question._id &&

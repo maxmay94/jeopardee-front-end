@@ -2,18 +2,22 @@ import React from 'react'
 
 const IndexCard = (props) => {
   return (
-    <div className='m-5 p-5 w-1/3 bg-blue-600'>
-      <p>Question: {props.question}</p>
+    <div className='rounded-lg m-5 p-5 w-1/5 bg-slate-700 text-slate-300 text-lg text-left font-medium shadow-2xl'>
+      <p>Question:</p>
+      <p>{props.question}</p>
       <br />
-      <p>Answer: {props.answer}</p>
+      <p>Answer: </p>
+      <p>{props.answer}</p>
       <br />
-      <p>Category: {props.category}</p>
+      <p>Category: </p>
+      <p>{props.category}</p>
       <br />
-      <p>Diffictulty: {props.difficulty}</p>
+      <p>Diffictulty: </p>
+      <p>{props.difficulty}</p>
       <br />
-      <button>edit</button>
+      <button className='text-yellow-400'>edit</button>
       <br />
-      <button>delete</button>
+      <button className='text-red-400'>delete</button>
       <br />
     </div>
   )
