@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
-
+import Select from 'react-select'
 import QuestionForm from './QuestionForm'
+
+// import { CategoryOptions } from './CategoryOptions'
 
 import { createQuestion } from '../../services/questionService'
 
@@ -13,6 +15,7 @@ const AddQuestion = (props) => {
   const [category, setCategory] = useState([])
   const [difficulty, setDifficulty] = useState('')
   const [url, setURL] = useState('')
+  const [options, setOptions] = useState([{}])
 
   const formData = {
     question: question,
@@ -22,11 +25,17 @@ const AddQuestion = (props) => {
     url: url
   }
 
-  useEffect(() => {
-    // set category  here to populate the drop down in QuestionForm
-  }, [])
+  // // temp options
+  let things = [
+    { value: 'Green', label: 'Green'},
+    { value: 'Black', label: 'Black'},
+    { value: 'Yellow', label: 'Yellow'},
+    { value: 'Orange', label: 'Orange'}
+  ]
 
-  console.log(category)
+  useEffect(() => {
+    setOptions(things)
+  }, [])
 
   const handleAddQuestion = async(e) => {
     e.preventDefault()
@@ -58,6 +67,8 @@ const AddQuestion = (props) => {
         setURL={setURL}
 
         handleAddQuestion={handleAddQuestion}
+        // options={CategoryOptions}
+        options={options}
       />
     </div>
   )
