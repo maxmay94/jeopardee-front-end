@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
 import QuestionForm from './QuestionForm'
@@ -10,7 +10,7 @@ const AddQuestion = (props) => {
 
   const [question, setQuestion] = useState('')
   const [answer, setAnswer] = useState('')
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState([])
   const [difficulty, setDifficulty] = useState('')
   const [url, setURL] = useState('')
 
@@ -21,6 +21,12 @@ const AddQuestion = (props) => {
     difficulty: difficulty,
     url: url
   }
+
+  useEffect(() => {
+    // set category  here to populate the drop down in QuestionForm
+  }, [])
+
+  console.log(category)
 
   const handleAddQuestion = async(e) => {
     e.preventDefault()
