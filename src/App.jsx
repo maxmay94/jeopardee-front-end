@@ -6,6 +6,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import QuestionIndex from './pages/QuestionIndex/QuestionIndex'
+import AddQuestion from './pages/AddQuestion/AddQuestion'
 import * as authService from './services/authService'
 
 const App = () => {
@@ -47,6 +48,11 @@ const App = () => {
         <Route 
           path='/index'
           element={user ? <QuestionIndex user={user} /> : <Navigate to="/login" />}
+        />
+
+        <Route 
+          path='/add'
+          element={user ? <AddQuestion user={user} /> : <Navigate to="/login" />}
         />
 
       </Routes>
