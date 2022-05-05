@@ -11,7 +11,18 @@ export const getAllQuestions = async() => {
   }
 }
 
+export const getAllCategories = async() => {
+  try{
+    const res = await fetch(`${BASE_URL}/show`)
+    const data = await res.json()
+    return data
+  } catch(err) {
+    throw err
+  }
+}
+
 export const createQuestion = async(question) => {
+  console.log('question service ----> ',question)
   try {
     const res = await fetch(BASE_URL, {
       method: "POST",

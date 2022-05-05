@@ -52,29 +52,43 @@ const QuestionForm = (props) => {
           />
 
         <div>
-          <label>Enter Category</label>
+          <div>
+            <label>Use Existing Category</label>
+          </div>
+          <CreatableSelect 
+            required
+            // isClearable
+            name='category'
+            autoComplete='on'
+            placeholder='Category'
+            value={props.category}
+            options={Object.values(props.options)}
+            // options={props.options}
+            onInputChange={handleInputChange}
+            onChange={handleChange}
+            // onChange={(e) => props.setCategory(e.target.value)}
+            />
+          {/* <input 
+            required
+            name='category'
+            autoComplete='on'
+            placeholder='Category'
+            value={props.category}
+            onChange={(e) => props.setCategory(e.target.value)}
+          /> */}
+
+          <div>
+            <label>Or Create new Category</label>
+          </div>
+          <input className='rounded'
+            required
+            name='category'
+            autoComplete='off'
+            placeholder='Category'
+            value={props.category}
+            onChange={(e) => props.setCategory(e.target.value)}
+            />
         </div>
-        <CreatableSelect 
-          required
-          // isClearable
-          name='category'
-          autoComplete='on'
-          placeholder='Category'
-          value={props.category}
-          options={Object.values(props.options)}
-          // options={props.options}
-          onInputChange={handleInputChange}
-          onChange={handleChange}
-          // onChange={(e) => props.setCategory(e.target.value)}
-        />
-        {/* <input 
-          required
-          name='category'
-          autoComplete='on'
-          placeholder='Category'
-          value={props.category}
-          onChange={(e) => props.setCategory(e.target.value)}
-        /> */}
 
         <div>
           <label>Pick Difficulty</label>

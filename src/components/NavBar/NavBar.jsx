@@ -4,7 +4,9 @@ const NavBar = ({ user, handleLogout }) => {
 
   return (
     <>
-      {user.name === 'max' ?
+      {
+        user &&
+        user.name === 'max' ?
         <nav>
           <ul>
             <li>Welcome, {user.name}</li>
