@@ -27,12 +27,13 @@ const QuestionIndex = (props) => {
   }
 
   return (
-    <div className='h-full w-full bg-blue-900'>
+    <div className='flex flex-wrap'>
       {questions ?
           questions.map((question, i) => 
             question._id &&
-              <div key={question._id} className='flex group relative'>
-                <IndexCard 
+              <div key={question._id} className='m-5 min-w-fit'>
+                <IndexCard
+                  className=''
                   question={question}
                   handleDeleteQuestion={handleDeleteQuestion}
                 />
