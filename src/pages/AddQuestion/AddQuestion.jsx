@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
-import Select from 'react-select'
 import QuestionForm from './QuestionForm'
 
 // import { CategoryOptions } from './CategoryOptions'
 
-import { createQuestion } from '../../services/questionService'
+import { createQuestion, getAllCategories } from '../../services/questionService'
 
 const AddQuestion = (props) => {
   const navigate = useNavigate()
@@ -15,7 +14,7 @@ const AddQuestion = (props) => {
   const [category, setCategory] = useState([])
   const [difficulty, setDifficulty] = useState('')
   const [url, setURL] = useState('')
-  const [options, setOptions] = useState([{}])
+  const [options, setOptions] = useState([])
 
   const formData = {
     question: question,
@@ -34,8 +33,19 @@ const AddQuestion = (props) => {
   ]
 
   useEffect(() => {
-    setOptions(things)
+    const fetchData = async () => {
+      const data = await getAllCategories()
+      return data
+    }
+    fetchData()
+      .then(data => {
+        setOptions(data)
+      })
+      .catch(err => {
+        throw err
+      })
   }, [])
+    
 
   const handleAddQuestion = async(e) => {
     e.preventDefault()

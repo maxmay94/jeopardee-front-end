@@ -1,8 +1,4 @@
-import React, { Component } from 'react'
-import CreatableSelect, { useCreatable } from 'react-select/creatable'
-import { ActionMeta, OnChangeValue } from 'react-select'
-import Select from 'react-select'
-// import { CategoryOptions } from './CategoryOptions'
+import React from 'react'
 
 const QuestionForm = (props) => {
 
@@ -55,33 +51,25 @@ const QuestionForm = (props) => {
           <div>
             <label>Use Existing Category</label>
           </div>
-          <CreatableSelect 
-            required
-            // isClearable
-            name='category'
-            autoComplete='on'
-            placeholder='Category'
+          <select 
+            name="category" 
             value={props.category}
-            options={Object.values(props.options)}
-            // options={props.options}
-            onInputChange={handleInputChange}
-            onChange={handleChange}
-            // onChange={(e) => props.setCategory(e.target.value)}
-            />
-          {/* <input 
-            required
-            name='category'
-            autoComplete='on'
-            placeholder='Category'
-            value={props.category}
-            onChange={(e) => props.setCategory(e.target.value)}
-          /> */}
+            onChange={(e) => props.setCategory(e.target.value)} 
+          >
+            <option  disabled defaultValue={true}>Select a Category</option>
+            {
+              props.options.map((option, i) => 
+                <option key={i} value={option}>
+                  {option}
+                </option>
+              )
+            }
+          </select>
 
           <div>
             <label>Or Create new Category</label>
           </div>
           <input className='rounded'
-            required
             name='category'
             autoComplete='off'
             placeholder='Category'
@@ -93,7 +81,11 @@ const QuestionForm = (props) => {
         <div>
           <label>Pick Difficulty</label>
         </div>
-        <select name="" id="" className='rounded'>
+        <select className='rounded'
+          name="difficulty" 
+          value={props.difficulty}
+          onChange={(e) => props.setDifficulty(e.target.value)} 
+        >
           <option value="200">200</option>
           <option value="400">400</option>
           <option value="600">600</option>
