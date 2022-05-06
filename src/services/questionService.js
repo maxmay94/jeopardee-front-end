@@ -13,9 +13,20 @@ export const getAllQuestions = async() => {
 
 export const getAllCategories = async() => {
   try{
-    const res = await fetch(`${BASE_URL}/show`)
+    const res = await fetch(`${BASE_URL}show`)
     const data = await res.json()
     return data
+  } catch(err) {
+    throw err
+  }
+}
+
+export const deleteQuestion = async(qestionId) => {
+  try{
+    await fetch(`${BASE_URL}${qestionId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
+    })
   } catch(err) {
     throw err
   }

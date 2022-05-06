@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getAllQuestions } from '../../services/questionService'
+import { getAllQuestions, deleteQuestion } from '../../services/questionService'
 import IndexCard from '../../components/QuestionList/IndexCard'
 
 const QuestionIndex = (props) => {
@@ -15,22 +15,29 @@ const QuestionIndex = (props) => {
     return () => { setQuestions([{}]) }
   }, [])
 
-  console.log('questions ------->> ', questions)
+  const handleDeleteQuestion = async(questionId) => {
+    console.log('QUESTION ID ------>> ',questionId)
+    try{
+      await deleteQuestion(questionId)
+      const questionData = await getAllQuestions()
+      setQuestions(questionData)
+    } catch(err) {
+      throw err
+    }
+  }
 
   return (
     <div className='h-full w-full bg-blue-900'>
       {questions ?
-          questions.map((question, i) => (
+          questions.map((question, i) => 
             question._id &&
               <div key={question._id} className='flex group relative'>
                 <IndexCard 
-                  question={question.question}
-                  answer={question.answer}
-                  category={question.category}
-                  difficulty={question.difficulty}
+                  question={question}
+                  handleDeleteQuestion={handleDeleteQuestion}
                 />
               </div>
-          ))
+          )
         :
           <div className='bg-red-600'>No questions yet</div>
       }

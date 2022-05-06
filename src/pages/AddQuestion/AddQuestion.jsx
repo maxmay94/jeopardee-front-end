@@ -77,7 +77,6 @@ const AddQuestion = (props) => {
         setURL={setURL}
 
         handleAddQuestion={handleAddQuestion}
-        // options={CategoryOptions}
         options={options}
       />
     </div>
