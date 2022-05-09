@@ -2,7 +2,7 @@ import React from 'react'
 
 const IndexCard = (props) => {
   return (
-    <div className='flex-wrap rounded-lg m-5 p-5 min-w-fit bg-slate-700 text-slate-300 text-lg text-left font-medium shadow-2xl'>
+    <div className='flex-wrap rounded-lg m-5 p-5  bg-slate-700 text-slate-300 text-lg text-left font-medium shadow-2xl'>
       <div className=''>
         <p>Question:</p>
         <p>{props.question.question}</p>

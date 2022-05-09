@@ -75,9 +75,6 @@ const QuestionForm = (props) => {
               <option value="600">600</option>
               <option value="800">800</option>
               <option value="1000">1000</option>
-              <option value="1200">1200</option>
-              <option value="1600">1600</option>
-              <option value="2000">2000</option>
             </select>
           </div>
           
