@@ -43,7 +43,6 @@ export const createQuestion = async(question) => {
       body: JSON.stringify(question)
     })
     const data = await res.json()
-    console.log('CREATE QUESTION : data ------->>',data)
     return data
   } catch(err) {
     throw err
