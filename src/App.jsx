@@ -7,6 +7,8 @@ import Landing from './pages/Landing/Landing'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import QuestionIndex from './pages/QuestionIndex/QuestionIndex'
 import AddQuestion from './pages/AddQuestion/AddQuestion'
+import GameBoard from './pages/GameBoard/GameBoard'
+import { startGame } from './services/questionService'
 import * as authService from './services/authService'
 
 const App = () => {
@@ -53,6 +55,12 @@ const App = () => {
         <Route 
           path='/add'
           element={user ? <AddQuestion user={user} /> : <Navigate to="/login" />}
+        />
+
+        <Route 
+          path='/play'
+          // element={ <Navigate to="/play" /> }
+          element={<GameBoard startGame={startGame} />} // RETURN TO THIS
         />
 
       </Routes>

@@ -33,7 +33,6 @@ export const deleteQuestion = async(qestionId) => {
 }
 
 export const createQuestion = async(question) => {
-  console.log('question service ----> ',question)
   try {
     const res = await fetch(BASE_URL, {
       method: "POST",
@@ -45,6 +44,17 @@ export const createQuestion = async(question) => {
     })
     const data = await res.json()
     console.log('CREATE QUESTION : data ------->>',data)
+    return data
+  } catch(err) {
+    throw err
+  }
+}
+
+export const startGame = async() => {
+  try{
+    const res = await fetch(`${BASE_URL}play`)
+    const data = await res.json()
+    console.log(data)
     return data
   } catch(err) {
     throw err
