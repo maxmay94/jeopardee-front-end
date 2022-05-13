@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import QuestionCard from '../../components/QuestionList/QuestionCard'
+import TitleCard from '../../components/QuestionList/TitleCard'
 
 const GameBoard  = (props) => {
 
@@ -15,11 +16,16 @@ const GameBoard  = (props) => {
 
   console.log('Game Questions ~~~>> ',questions)
 
-
   return(
     <div>
-      <h1>NEW GAME</h1>
-      <QuestionCard  />
+      {
+        questions.map((question, i) => (
+          <div key={i}>
+            <TitleCard title={question}/>
+            <QuestionCard />
+          </div>
+        ))
+      }
     </div>
   )
 }
