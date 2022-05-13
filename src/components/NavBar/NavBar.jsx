@@ -20,6 +20,7 @@ const NavBar = ({ user, handleLogout }) => {
       :
         <nav>
           <ul>
+            {/* hide login and signup links in future so only people in the know can create an account */}
             <li><Link to="/login">Log In</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
             <li><Link to="/play">Play Jeopar-dee!</Link></li>
