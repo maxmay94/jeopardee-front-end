@@ -20,7 +20,7 @@ const GameBoard  = (props) => {
     <div>
       {
         allQuestions.map((questions, i) => (
-          <div key={i}>
+          <div className='bg-yellow-800 m-10 rounded' key={i}>
             <TitleCard title={questions}/>
             {
               questions[i] &&
