@@ -14,8 +14,6 @@ const GameBoard  = (props) => {
     fetchAllQuestions()
   }, [])
 
-  console.log('Game Questions ~~~>> ',allQuestions)
-
   return(
     <div>
       {
@@ -25,7 +23,10 @@ const GameBoard  = (props) => {
             {
               questions[i] &&
                 questions?.map((question, j) => (
-                  question && <QuestionCard question={question}/>
+                  question &&
+                  <div key={j}>
+                    <QuestionCard question={question}/>
+                  </div> 
                 ))
             }
           </div>
