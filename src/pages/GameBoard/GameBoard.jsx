@@ -4,25 +4,30 @@ import TitleCard from '../../components/QuestionList/TitleCard'
 
 const GameBoard  = (props) => {
 
-  const[questions, setQuestions] = useState([{}])
+  const[allQuestions, setAllQuestions] = useState([{}])
 
   useEffect(() => {
     const fetchAllQuestions = async() => {
       const questionData = await props.startGame()
-      setQuestions(questionData)
+      setAllQuestions(questionData)
     }
     fetchAllQuestions()
   }, [])
 
-  console.log('Game Questions ~~~>> ',questions)
+  console.log('Game Questions ~~~>> ',allQuestions)
 
   return(
     <div>
       {
-        questions.map((question, i) => (
+        allQuestions.map((questions, i) => (
           <div key={i}>
-            <TitleCard title={question}/>
-            <QuestionCard />
+            <TitleCard title={questions}/>
+            {
+              questions[i] &&
+                questions?.map((question, j) => (
+                  question && <QuestionCard question={question}/>
+                ))
+            }
           </div>
         ))
       }
