@@ -30,7 +30,7 @@ const App = () => {
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
 
-        <Route path="/" element={<Landing user={user} />} />
+        {/* <Route path="/" element={<Landing user={user} />} /> */}
 
         <Route
           path="/signup"
@@ -58,7 +58,7 @@ const App = () => {
         />
 
         <Route 
-          path='/play'
+          path='/'
           // element={ <Navigate to="/play" /> }
           element={<GameBoard startGame={startGame} />} // RETURN TO THIS
         />

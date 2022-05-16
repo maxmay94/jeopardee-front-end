@@ -6,7 +6,7 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       {
         user &&
-        user.name === 'max' ?
+        (user.name === 'max' ||  user.name === 'ted') &&
         <nav>
           <ul>
             <li>Welcome, {user.name}</li>
@@ -14,18 +14,18 @@ const NavBar = ({ user, handleLogout }) => {
             <li><Link to="/changePassword">Change Password</Link></li>
             <li><Link to='/index'>View all questions</Link></li>
             <li><Link to='/add'>Add a question</Link></li>
-            <li><Link to="/play">Play Jeopar-dee!</Link></li>
+            <li><Link to="/">Play Jeopar-dee!</Link></li>
           </ul>
         </nav>
-      :
-        <nav>
-          <ul>
-            {/* hide login and signup links in future so only people in the know can create an account */}
-            <li><Link to="/login">Log In</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
-            <li><Link to="/play">Play Jeopar-dee!</Link></li>
-          </ul>
-        </nav>
+      // :
+      //   <nav>
+      //     <ul>
+      //       {/* hide login and signup links in future so only people in the know can create an account */}
+      //       <li><Link to="/login">Log In</Link></li>
+      //       <li><Link to="/signup">Sign Up</Link></li>
+      //       <li><Link to="/">Play Jeopar-dee!</Link></li>
+      //     </ul>
+      //   </nav>
       }
     </>
   )
