@@ -26,7 +26,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className='bg-blue-900'>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
 
@@ -64,7 +64,7 @@ const App = () => {
         />
 
       </Routes>
-    </>
+    </div>
   )
 }
 
