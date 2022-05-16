@@ -28,7 +28,7 @@ const GameBoard  = (props) => {
                 questions.length > 1 ?
                   questions?.map((question, j) => (
                     question &&
-                    <div key={j} className='h-1/6 my-4'>
+                    <div key={j} className='h-1/6'>
                       <QuestionCard question={question}/>
                     </div> 
                   ))
