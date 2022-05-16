@@ -25,13 +25,17 @@ const GameBoard  = (props) => {
             <div className='bg-blue-800 rounded border-2 border-black w-1/6' key={i}>
               <TitleCard title={questions}/>
               {
-                questions.length > 1 &&
+                questions.length > 1 ?
                   questions?.map((question, j) => (
                     question &&
-                    <div key={j} className='h-1/6 border-black'>
-                      <QuestionCard question={question} className='border-black'/>
+                    <div key={j} className='h-1/6 border-black my-2'>
+                      <QuestionCard question={question}/>
                     </div> 
                   ))
+                  :
+                  <div className='text-center align-middle font-extrabold text-6xl text-yellow-500'>
+                    <h1>LOADING...</h1>
+                  </div>
               }
             </div>
           ))
