@@ -17,18 +17,18 @@ const GameBoard  = (props) => {
   console.log(allQuestions)
 
   return(
-    <div className='bg-slate-400'>
-      <div className='w-fit h-fit flex '>
+    <div className='bg-slate-400 flex'>
+      <div className='w-50 h-fit flex'>
         {
           allQuestions ? 
           allQuestions.map((questions, i) => (
-            <div className='bg-yellow-800 my-10 rounded border-2 border-yellow-500' key={i}>
-              <TitleCard title={questions}/>
+            <div className='bg-blue-800 rounded border-2 border-black w-1/6' key={i}>
+              <TitleCard title={questions} className='h-1/6 border-black'/>
               {
                 questions.length > 1 &&
                   questions?.map((question, j) => (
                     question &&
-                    <div key={j}>
+                    <div key={j} className='h-1/6  '>
                       <QuestionCard question={question}/>
                     </div> 
                   ))
