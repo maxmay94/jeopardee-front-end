@@ -24,14 +24,6 @@ const AddQuestion = (props) => {
     url: url
   }
 
-  // // temp options
-  let things = [
-    { value: 'Green', label: 'Green'},
-    { value: 'Black', label: 'Black'},
-    { value: 'Yellow', label: 'Yellow'},
-    { value: 'Orange', label: 'Orange'}
-  ]
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await getAllCategories()
@@ -46,12 +38,10 @@ const AddQuestion = (props) => {
       })
   }, [])
     
-
   const handleAddQuestion = async(e) => {
     e.preventDefault()
     try {
-      const newQuestion = await createQuestion(formData)
-      console.log(newQuestion)
+      await createQuestion(formData)
       navigate('/index')
     } catch(err) {
       throw err

@@ -1,15 +1,40 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router'
 import { useParams } from 'react-router-dom'
-import { getOne, getAllCategories } from '../../services/questionService'
+import { getOne, getAllCategories, updateQuestion } from '../../services/questionService'
 
 const EditQuestion = (props) => {
+  const navigate = useNavigate()
   const { id } = useParams()
-  const [formData, setFormData] = useState({})
   const [options, setOptions] = useState([])
+  const [formData, setFormData] = useState({
+    // id: id,
+    // question: '',
+    // answer: '',
+    // category: '',
+    // difficulty: ''
+  })
+
+  const [question, setQuestion] = useState('')
+  const [answer, setAnswer] = useState('')
+  const [category, setCategory] = useState([])
+  const [difficulty, setDifficulty] = useState('')
 
   useEffect(() => {
+    formData.question = question
+  },[formData.question])
 
-  },[formData])
+  // useEffect(() => {
+  //   formData.answer = answer
+  // },[formData.answer])
+
+  // useEffect(() => {
+  //   formData.category = category
+  // },[formData.category])
+
+  // useEffect(() => {
+  //   formData.difficulty = difficulty
+  // },[formData.difficulty])
 
   useEffect(() => {
     const fetchData = async() => {
@@ -23,13 +48,27 @@ const EditQuestion = (props) => {
       }
     }
     fetchData()
-  },[])
+  },[id])
+
+  const handleUpdateQuestion = async(e) => {
+    e.preventDefault()
+    try {
+      formData.question = question
+      formData.answer = answer
+      formData.category = category
+      formData.difficulty = difficulty
+      await updateQuestion(formData)
+      navigate('/index')
+    } catch(err) {
+      throw err
+    }
+  }
 
   console.log(formData)
 
   return (
     <div className='content-center'>
-      <form onSubmit={formData.handleAddQuestion}>
+      <form onSubmit={handleUpdateQuestion}>
 
         <div className='bg-yellow-600 w-1/3 rounded m-5 p-5'>
 
@@ -41,7 +80,7 @@ const EditQuestion = (props) => {
               autoComplete='off'
               placeholder='Question'
               value={formData.question}
-              onChange={(e) => formData.setQuestion(e.target.value)}
+              onChange={(e) => setQuestion(e.target.value)}
               />
           </div>
 
@@ -53,7 +92,7 @@ const EditQuestion = (props) => {
               autoComplete='off'
               placeholder='Answer'
               value={formData.answer}
-              onChange={(e) => formData.setAnswer(e.target.value)}
+              onChange={(e) => setAnswer(e.target.value)}
               />
           </div>
 
@@ -63,7 +102,7 @@ const EditQuestion = (props) => {
               <select className='rounded w-full h-10'
                 name="category" 
                 value={formData.category}
-                onChange={(e) => formData.setCategory(e.target.value)} 
+                onChange={(e) => setCategory(e.target.value)} 
                 >
                 <option  disabled defaultValue={true}>Select a Category</option>
                 {
@@ -83,7 +122,7 @@ const EditQuestion = (props) => {
                 autoComplete='off'
                 placeholder='Category'
                 value={formData.category}
-                onChange={(e) => formData.setCategory(e.target.value)}
+                onChange={(e) => setCategory(e.target.value)}
                 />
             </div>
           </div>
@@ -93,7 +132,7 @@ const EditQuestion = (props) => {
             <select className='rounded w-full h-10'
               name="difficulty" 
               value={formData.difficulty}
-              onChange={(e) => formData.setDifficulty(e.target.value)} 
+              onChange={(e) => setDifficulty(e.target.value)} 
               >
               <option value="200">200</option>
               <option value="400">400</option>
