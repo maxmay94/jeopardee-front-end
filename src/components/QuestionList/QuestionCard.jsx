@@ -8,8 +8,6 @@ const QuestionCard = (props) => {
     setQuestionPicked(0)
   },[])
 
-  console.log(questionPicked)
-
   const clickQuestion = () => {
     setQuestionPicked(questionPicked + 1)
   }

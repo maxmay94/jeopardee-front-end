@@ -31,9 +31,8 @@ const QuestionIndex = (props) => {
       {questions ?
           questions.map((question, i) => 
             question._id &&
-              <div key={question._id} className='m-5 min-w-fit'>
+              <div key={question._id} className='m-5 min-w-1/6'>
                 <IndexCard
-                  className=''
                   question={question}
                   handleDeleteQuestion={handleDeleteQuestion}
                 />
