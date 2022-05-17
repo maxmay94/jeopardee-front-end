@@ -33,8 +33,8 @@ const GameBoard  = (props) => {
                     </div> 
                   ))
                   :
-                  <div className='font-black absolute inset-0 z-10 w-screen h-scren bg-blue-900 text-yellow-500 text-9xl drop-shadow-xl text-center'>
-                    <h1>LOADING...</h1>
+                  <div className='font-black absolute inset-0 z-10 w-screen h-scren bg-blue-900 text-yellow-500 text-9xl drop-shadow-xl text-center grid place-content-center'>
+                    <h1 className='animate-pulse'>LOADING...</h1>
                   </div>
               }
             </div>
