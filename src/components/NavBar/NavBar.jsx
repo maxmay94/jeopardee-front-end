@@ -6,7 +6,7 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       {
         user &&
-        (user.name === 'max' ||  user.name === 'ted') &&
+        (user._id === '62729acf9e9a4de4b03de82f' || user._id === '6283155d0f980a0e5dc1f7a3') &&
         <nav className='bg-blue-700 text-yellow-500 text-2xl'>
           <ul className='flex flex-wrap'>
             <li className='flex grow pl-5'><Link to="/changePassword">Change Password</Link></li>
@@ -15,15 +15,6 @@ const NavBar = ({ user, handleLogout }) => {
             <li className='flex end pr-5'><Link to="" onClick={handleLogout}>Log out</Link></li>
           </ul>
         </nav>
-      // :
-      //   <nav>
-      //     <ul>
-      //       {/* hide login and signup links in future so only people in the know can create an account */}
-      //       <li><Link to="/login">Log In</Link></li>
-      //       <li><Link to="/signup">Sign Up</Link></li>
-      //       <li><Link to="/">Play Jeopar-dee!</Link></li>
-      //     </ul>
-      //   </nav>
       }
     </>
   )
