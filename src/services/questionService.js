@@ -49,6 +49,22 @@ export const createQuestion = async(question) => {
   }
 }
 
+export const updateQuestion = async (questionId) => {
+  try {
+    const res = await fetch(`${BASE_URL}${questionId}`, {
+      method: "PUT",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      },
+    })
+    const data = await res.json()
+    return data
+  } catch (err) {
+    throw err
+  }
+}
+
 export const startGame = async() => {
   try{
     const res = await fetch(`${BASE_URL}play`)
