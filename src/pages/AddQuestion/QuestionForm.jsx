@@ -1,6 +1,7 @@
 import React from 'react'
 
 const QuestionForm = (props) => {
+  const val = {value: 'Pick Something Please'}
 
   return (
     <div className='content-center'>
@@ -37,13 +38,13 @@ const QuestionForm = (props) => {
               <label>Use Existing Category</label>
               <select className='rounded w-full h-10'
                 name="category" 
-                value={props.category}
+                defaultValue={val.value}
                 onChange={(e) => props.setCategory(e.target.value)} 
                 >
-                <option  disabled defaultValue={true}>Select a Category</option>
+                <option aria-disabled>Select a Category</option>
                 {
                   props.options.map((option, i) => 
-                  <option key={i} value={option}>
+                    <option key={i} value={option}>
                       {option}
                     </option>
                   )
@@ -54,6 +55,7 @@ const QuestionForm = (props) => {
             <div className='m-5'>
               <label>Or Create new Category</label>
               <input className='rounded w-full h-10'
+                multiple={false}
                 name='category'
                 autoComplete='off'
                 placeholder='Category'
@@ -66,10 +68,12 @@ const QuestionForm = (props) => {
           <div className='m-5'>
             <label>Pick Difficulty</label>
             <select className='rounded w-full h-10'
+              defaultValue={val.value}
+              multiple={false}
               name="difficulty" 
-              value={props.difficulty}
               onChange={(e) => props.setDifficulty(e.target.value)} 
-              >
+            >
+              <option aria-disabled>Select a value</option>
               <option value="200">200</option>
               <option value="400">400</option>
               <option value="600">600</option>
