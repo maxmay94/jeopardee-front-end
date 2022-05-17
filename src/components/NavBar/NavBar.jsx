@@ -7,14 +7,12 @@ const NavBar = ({ user, handleLogout }) => {
       {
         user &&
         (user.name === 'max' ||  user.name === 'ted') &&
-        <nav>
-          <ul>
-            <li>Welcome, {user.name}</li>
-            <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-            <li><Link to="/changePassword">Change Password</Link></li>
-            <li><Link to='/index'>View all questions</Link></li>
-            <li><Link to='/add'>Add a question</Link></li>
-            <li><Link to="/">Play Jeopar-dee!</Link></li>
+        <nav className='bg-blue-700 text-yellow-500 text-2xl'>
+          <ul className='flex flex-wrap'>
+            <li className='flex grow pl-5'><Link to="/changePassword">Change Password</Link></li>
+            <li className='flex grow'><Link to='/index'>View and edit questions</Link></li>
+            <li className='flex grow'><Link to='/add'>Add a question</Link></li>
+            <li className='flex end pr-5'><Link to="" onClick={handleLogout}>Log out</Link></li>
           </ul>
         </nav>
       // :

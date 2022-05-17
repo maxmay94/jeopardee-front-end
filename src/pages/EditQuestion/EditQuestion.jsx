@@ -11,7 +11,6 @@ const EditQuestion = (props) => {
 
   },[formData])
 
-
   useEffect(() => {
     const fetchData = async() => {
       try{
