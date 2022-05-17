@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const IndexCard = (props) => {
   return (
@@ -17,9 +18,18 @@ const IndexCard = (props) => {
         <p className='text-2xl'>{props.question.answer}</p>
         <br />
         <div className='inline-flex'>
-          <button className='text-yellow-200 bg-yellow-700 hover:bg-yellow-600 p-1 m-1 rounded w-16'>edit</button>
 
-          <button className='text-red-200 bg-red-900 hover:bg-red-800 p-1 m-1 rounded w-16'
+          <Link to={`/${props.question._id}/edit`}>
+            <button 
+              className='text-yellow-200 bg-yellow-700 hover:bg-yellow-600 p-1 m-1 rounded w-16'
+
+            >
+              edit
+            </button>
+          </Link>
+
+          <button 
+            className='text-red-200 bg-red-900 hover:bg-red-800 p-1 m-1 rounded w-16'
             onClick={() => props.handleDeleteQuestion(props.question._id)}
           >
             delete

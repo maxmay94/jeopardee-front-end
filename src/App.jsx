@@ -3,13 +3,13 @@ import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
-// import Landing from './pages/Landing/Landing'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import QuestionIndex from './pages/QuestionIndex/QuestionIndex'
 import AddQuestion from './pages/AddQuestion/AddQuestion'
 import GameBoard from './pages/GameBoard/GameBoard'
 import { startGame } from './services/questionService'
 import * as authService from './services/authService'
+import EditQuestion from './pages/EditQuestion/EditQuestion'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -55,6 +55,11 @@ const App = () => {
         <Route 
           path='/add'
           element={user ? <AddQuestion user={user} /> : <Navigate to="/login" />}
+        />
+
+        <Route 
+          path='/:id/edit'
+          element={user ? <EditQuestion user={user} /> : <Navigate to="/login" />}
         />
 
         <Route 

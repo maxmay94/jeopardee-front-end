@@ -11,6 +11,19 @@ export const getAllQuestions = async() => {
   }
 }
 
+export const getOne = async(id) => {
+  try{
+      const res = await fetch(`${BASE_URL}/${id}`, {
+        headers: { Authorization: `Bearer ${tokenService.getToken()}` },
+        method: "GET",
+      })
+      const data = await res.json();
+      return data
+  } catch(err) {
+    throw err
+  }
+}
+
 export const getAllCategories = async() => {
   try{
     const res = await fetch(`${BASE_URL}show`)

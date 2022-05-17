@@ -1,10 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { getOne, getAllCategories } from '../../services/questionService'
 
-const EditQuestionForm = (props) => {
+const EditQuestion = (props) => {
+  const { id } = useParams()
+  const [formData, setFormData] = useState({})
+  const [options, setOptions] = useState([])
+
+  useEffect(() => {
+
+  },[formData])
+
+
+  useEffect(() => {
+    const fetchData = async() => {
+      try{
+        const categoryData = await getAllCategories()
+        const data = await getOne(id)
+        setOptions(categoryData)
+        setFormData(data)
+      } catch(err) {
+        throw err
+      }
+    }
+    fetchData()
+  },[])
+
+  console.log(formData)
 
   return (
     <div className='content-center'>
-      <form onSubmit={props.handleAddQuestion}>
+      <form onSubmit={formData.handleAddQuestion}>
 
         <div className='bg-yellow-600 w-1/3 rounded m-5 p-5'>
 
@@ -15,8 +41,8 @@ const EditQuestionForm = (props) => {
               name='question'
               autoComplete='off'
               placeholder='Question'
-              value={props.question}
-              onChange={(e) => props.setQuestion(e.target.value)}
+              value={formData.question}
+              onChange={(e) => formData.setQuestion(e.target.value)}
               />
           </div>
 
@@ -27,8 +53,8 @@ const EditQuestionForm = (props) => {
               name='answer'
               autoComplete='off'
               placeholder='Answer'
-              value={props.answer}
-              onChange={(e) => props.setAnswer(e.target.value)}
+              value={formData.answer}
+              onChange={(e) => formData.setAnswer(e.target.value)}
               />
           </div>
 
@@ -37,12 +63,12 @@ const EditQuestionForm = (props) => {
               <label>Use Existing Category</label>
               <select className='rounded w-full h-10'
                 name="category" 
-                value={props.category}
-                onChange={(e) => props.setCategory(e.target.value)} 
+                value={formData.category}
+                onChange={(e) => formData.setCategory(e.target.value)} 
                 >
                 <option  disabled defaultValue={true}>Select a Category</option>
                 {
-                  props.options.map((option, i) => 
+                  options.map((option, i) => 
                   <option key={i} value={option}>
                       {option}
                     </option>
@@ -57,8 +83,8 @@ const EditQuestionForm = (props) => {
                 name='category'
                 autoComplete='off'
                 placeholder='Category'
-                value={props.category}
-                onChange={(e) => props.setCategory(e.target.value)}
+                value={formData.category}
+                onChange={(e) => formData.setCategory(e.target.value)}
                 />
             </div>
           </div>
@@ -67,8 +93,8 @@ const EditQuestionForm = (props) => {
             <label>Pick Difficulty</label>
             <select className='rounded w-full h-10'
               name="difficulty" 
-              value={props.difficulty}
-              onChange={(e) => props.setDifficulty(e.target.value)} 
+              value={formData.difficulty}
+              onChange={(e) => formData.setDifficulty(e.target.value)} 
               >
               <option value="200">200</option>
               <option value="400">400</option>
@@ -79,7 +105,7 @@ const EditQuestionForm = (props) => {
           </div>
           
           <br />
-          <button className='bg-green-800 hover:bg-green-700 p-2 rounded'>Add Question</button>
+          <button className='bg-green-800 hover:bg-green-700 p-2 rounded'>Update Question</button>
 
         </div>
       </form>
@@ -87,4 +113,4 @@ const EditQuestionForm = (props) => {
   )
 }
 
-export default  EditQuestionForm
+export default  EditQuestion
