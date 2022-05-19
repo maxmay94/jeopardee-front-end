@@ -79,13 +79,11 @@ export const updateQuestion = async (questionId) => {
 }
 
 export const startGame = async() => {
-  console.log('TEST')
   try{
     const res = await fetch(`${BASE_URL}play`, {
       headers: {
         merhod: 'GET',
         'content-type': 'application/json',
-        'Access-Control-Allow-Origin' : '*'
       },
     })
     const data = await res.json()
