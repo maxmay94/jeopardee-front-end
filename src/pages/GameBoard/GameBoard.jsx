@@ -14,8 +14,6 @@ const GameBoard  = (props) => {
     fetchAllQuestions()
   }, [])
 
-  console.log(allQuestions)
-
   return(
     <div className='flex'>
       <div className='w-50 flex w-screen h-screen'>
