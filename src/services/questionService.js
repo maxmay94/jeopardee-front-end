@@ -38,7 +38,7 @@ export const deleteQuestion = async(qestionId) => {
   try{
     await fetch(`${BASE_URL}${qestionId}`, {
       method: 'DELETE',
-      headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
     })
   } catch(err) {
     throw err
@@ -68,7 +68,7 @@ export const updateQuestion = async (questionId) => {
       method: "PUT",
       headers: {
         'content-type': 'application/json',
-        'Authorization': 'Bearer ' + tokenService.getToken()
+        'Authorization': `Bearer ${tokenService.getToken()}`
       },
     })
     const data = await res.json()
@@ -79,11 +79,13 @@ export const updateQuestion = async (questionId) => {
 }
 
 export const startGame = async() => {
+  console.log('TEST')
   try{
     const res = await fetch(`${BASE_URL}play`, {
       headers: {
         merhod: 'GET',
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Access-Control-Allow-Origin' : '*'
       },
     })
     const data = await res.json()
