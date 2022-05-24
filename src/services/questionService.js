@@ -81,8 +81,8 @@ export const updateQuestion = async (questionId) => {
 export const startGame = async() => {
   try{
     const res = await fetch(`${BASE_URL}play`, {
+      merhod: 'GET',
       headers: {
-        merhod: 'GET',
         'content-type': 'application/json',
       },
     })
