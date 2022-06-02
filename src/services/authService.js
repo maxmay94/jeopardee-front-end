@@ -19,7 +19,7 @@ async function signup(user) {
     throw err
   }
 }
-
+ 
 function getUser() {
   return tokenService.getUserFromToken()
 }
